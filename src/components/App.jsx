@@ -3,7 +3,7 @@ import { Section } from "./Section/Section";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Statistics } from "./Statistics/Statistics";
 import { Container } from "./App.styled";
-
+import { Notification } from "./Notification/Notification"
  export class App extends Component {
   state = {
         good: 0,
@@ -39,13 +39,14 @@ import { Container } from "./App.styled";
            />
          </Section>
          <Section title="Statistics">
-           <Statistics
+          {totalFeedback !== 0 ? (<Statistics
               good={good}
               neutral={neutral}
               bad={bad}
               total={totalFeedback}
               positivePercentage={totalPercentage}
-           />
+           /> ) : (<Notification message="There is no feedback"/>)}
+           
         </Section>
       </Container>
     )
